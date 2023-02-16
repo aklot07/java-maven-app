@@ -1,8 +1,6 @@
 pipeline {
 	agent any
-	tools {
-        maven 'm1' 
-    }
+	
 	stages {
 		stage('Build') {
 			steps {
@@ -17,6 +15,11 @@ pipeline {
 				always {
 					junit 'target/surefire-reports/*.xml'
 				}
+			}
+		}
+		stage('Run') {
+			steps {
+				sh './scripts/deliver.sh'
 			}
 		}
 		
