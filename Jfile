@@ -19,6 +19,7 @@ pipeline {
 		}
 		stage('Run') {
 			steps {
+				echo "Hello TestAK"
 				sh './scripts/deliver.sh'
 			}
 		}
