@@ -19,7 +19,7 @@ pipeline {
 		}
 		stage('Run') {
 			steps {
-				echo "Hello from github"
+				echo "Hello"
 				sh './scripts/deliver.sh'
 			}
 		}
