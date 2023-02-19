@@ -19,7 +19,7 @@ pipeline {
 		}
 		stage('Run') {
 			steps {
-				echo "Hello ak"
+				echo "Hello ak2"
 				sh './scripts/deliver.sh'
 			}
 		}
