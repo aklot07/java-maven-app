@@ -19,7 +19,7 @@ pipeline {
 		}
 		stage('Run') {
 			steps {
-				echo "Hello from App"
+				echo "Hello from App2"
 				sh './scripts/deliver.sh'
 			}
 		}
