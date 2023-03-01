@@ -1,5 +1,8 @@
 pipeline {
 	agent any
+	tools{
+	maven 'maven1'
+	}
 	
 	stages {
 		stage('Build') {
@@ -19,7 +22,7 @@ pipeline {
 		}
 		stage('Run') {
 			steps {
-				echo "Hello ak123"
+				echo "Hello TestAK"
 				sh './scripts/deliver.sh'
 			}
 		}
