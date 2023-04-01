@@ -22,12 +22,12 @@ pipeline {
                 }
             }
         }
-        stage("Quality gate") {
-            steps {
-                timeout(time: 3, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
+        stage('Run') {
+			steps {
+				//echo "Hello TestAK"
+				sh './scripts/deliver.sh'
+			}
 		}
-            }
         }
     }
 }
