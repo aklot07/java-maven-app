@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage ('clean up') {
+	        steps {
+	            cleanWs()
+	        }
+	    }
         stage('Clone sources') {
             steps {
                 sh 'git clone https://github.com/aklot07/java-maven-app.git'
