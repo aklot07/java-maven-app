@@ -17,14 +17,15 @@ pipeline {
             steps {
 		   dir ('java-maven-app'){ 
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn clean package'
+                    sh 'mvn clean package sonar:sonar'
 			}
                 }
             }
         }
         stage("Quality gate") {
             steps {
-                waitForQualityGate abortPipeline: true
+                timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: truewaitForQualityGate abortPipeline: true
             }
         }
     }
