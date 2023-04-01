@@ -25,7 +25,7 @@ pipeline {
         stage('Run') {
 			steps {
 				//echo "Hello TestAK"
-				sh './scripts/deliver.sh'
+				sh '/scripts/deliver.sh'
 			}
 		}
         }
