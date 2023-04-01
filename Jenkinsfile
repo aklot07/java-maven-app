@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone sources') {
             steps {
-                git url: 'https://github.com/aklot07/java-maven-app.git'
+                git clone 'https://github.com/aklot07/java-maven-app.git'
             }
         }
 
