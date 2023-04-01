@@ -20,17 +20,9 @@ pipeline {
                     sh 'mvn clean package sonar:sonar'
 			sh 'scripts/deliver.sh'
 			}
-                }
-            }
-        }
-        /*stage('Run') {
-			steps {
-			dir ('java-maven-app/scripts'){
-				//echo "Hello TestAK"
-				sh 'deliver.sh'
-			}
-			}
-		}*/
+                   }
+               }
+           }
         }
     }
 
