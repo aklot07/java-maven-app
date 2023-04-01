@@ -16,7 +16,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "./gradlew sonarqube"
+                    sh "mvn clean package sonar:sonar"
                 }
             }
         }
