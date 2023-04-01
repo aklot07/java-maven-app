@@ -17,7 +17,7 @@ pipeline {
             steps {
 		   dir ('java-maven-app'){ 
                 withSonarQubeEnv('SonarQube') {
-                    sh "mvn clean package'
+                    sh 'mvn clean package'
 			}
                 }
             }
