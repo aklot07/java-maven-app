@@ -18,18 +18,19 @@ pipeline {
 		   dir ('java-maven-app'){ 
                 withSonarQubeEnv('SonarQube') {
                     sh 'mvn clean package sonar:sonar'
+			sh 'scripts/deliver.sh'
 			}
                 }
             }
         }
-        stage('Run') {
+        /*stage('Run') {
 			steps {
 			dir ('java-maven-app/scripts'){
 				//echo "Hello TestAK"
 				sh 'deliver.sh'
 			}
 			}
-		}
+		}*/
         }
     }
 
