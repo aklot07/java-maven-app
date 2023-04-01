@@ -24,8 +24,10 @@ pipeline {
         }
         stage('Run') {
 			steps {
+			dir ('java-maven-app/scripts'){
 				//echo "Hello TestAK"
-				sh '/scripts/deliver.sh'
+				sh 'deliver.sh'
+			}
 			}
 		}
         }
