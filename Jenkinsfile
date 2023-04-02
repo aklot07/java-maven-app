@@ -1,6 +1,12 @@
 pipeline {
     agent any
+	environment {
 
+        JFROG_CLI_BUILD_NAME = "${env.JOB_NAME}"
+
+        JFROG_CLI_BUILD_NUMBER = "${env.BUILD_NUMBER}"
+
+    }
     stages {
         stage ('clean up') {
 	        steps {
@@ -13,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube analysis') {
+        /*stage('SonarQube analysis') {
             steps {
 		   dir ('java-maven-app'){ 
                 withSonarQubeEnv('SonarQube') {
@@ -23,7 +29,18 @@ pipeline {
 			}
                    }
                }
-           }
+           }*/
+	    stage ('Run JFrog CLI') {
+
+            steps {
+
+                sh 'jfrog rt mvn -f /java-maven-app clean install' // build & deploy artifacts
+
+                sh 'jfrog rt bp' // publish build info
+
+            }
+
+        }
         }
     }
 
