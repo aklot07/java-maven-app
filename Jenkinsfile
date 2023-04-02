@@ -18,7 +18,7 @@ pipeline {
 		   dir ('java-maven-app'){ 
                 withSonarQubeEnv('SonarQube') {
                     sh 'mvn clean package sonar:sonar'
-		    archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+		    archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
 		    sh 'scripts/deliver.sh'
 			}
                    }
