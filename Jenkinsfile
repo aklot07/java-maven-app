@@ -1,7 +1,6 @@
 pipeline {
     agent any
-	
-    stages {
+      stages {
         stage ('clean up') {
 	        steps {
 	            cleanWs()
@@ -12,7 +11,6 @@ pipeline {
                 sh 'git clone https://github.com/aklot07/java-maven-app.git'
             }
         }
-
         stage('SonarQube analysis') {
             steps {
 		   dir ('java-maven-app'){ 
@@ -24,11 +22,8 @@ pipeline {
                }
            }
 	    stage ('Deploy Artifact') {
-
             steps {
 		dir ('java-maven-app'){ 
-		//sh 'touch ak'
-		//sh 'mvn clean package'
 		archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
                 rtUpload (
     				serverId: 'Artifactory-JF',
@@ -40,10 +35,5 @@ pipeline {
             			}
          			]
     			}'''
-
             	)
-		}
-        }
-        }
-    }
-}
+		}}}}}
