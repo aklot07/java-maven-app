@@ -13,7 +13,7 @@ pipeline {
             }
         }
 
-        /*stage('SonarQube analysis') {
+        stage('SonarQube analysis') {
             steps {
 		   dir ('java-maven-app'){ 
                 withSonarQubeEnv('SonarQube') {
@@ -22,13 +22,13 @@ pipeline {
 			}
                    }
                }
-           }*/
+           }
 	    stage ('Deploy Artifact') {
 
             steps {
 		dir ('java-maven-app'){ 
 		//sh 'touch ak'
-		sh 'mvn clean package'
+		//sh 'mvn clean package'
 		archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
                 rtUpload (
     				serverId: 'Artifactory-JF',
