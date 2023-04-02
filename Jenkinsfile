@@ -13,27 +13,27 @@ pipeline {
             }
         }
 
-        /*stage('SonarQube analysis') {
+        stage('SonarQube analysis') {
             steps {
 		   dir ('java-maven-app'){ 
                 withSonarQubeEnv('SonarQube') {
-                    sh 'mvn clean package sonar:sonar'
-		    archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+                    sh 'mvn clean package sonar:sonar'		    
 		    sh 'scripts/deliver.sh'
 			}
                    }
                }
-           }*/
+           }
 	    stage ('Run JFrog CLI') {
 
             steps {
 		sh 'touch ak'
+		archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
                 rtUpload (
     				serverId: 'AK-Artifactory',
     				spec: '''{
           			"files": [
            			 {
-             			 "pattern": "ak",
+             			 "pattern": "target/*.jar",
              			 "target": "example-repo-local/"
             			}
          			]
