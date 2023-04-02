@@ -13,7 +13,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube analysis') {
+        /*stage('SonarQube analysis') {
             steps {
 		   dir ('java-maven-app'){ 
                 withSonarQubeEnv('SonarQube') {
@@ -22,14 +22,16 @@ pipeline {
 			}
                    }
                }
-           }
-	    stage ('Run JFrog CLI') {
+           }*/
+	    stage ('Deploy Artifact') {
 
             steps {
-		sh 'touch ak'
+		dir ('java-maven-app'){ 
+		//sh 'touch ak'
+		sh 'mvn clean package'
 		archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
                 rtUpload (
-    				serverId: 'AK-Artifactory',
+    				serverId: 'Artifactory-JF',
     				spec: '''{
           			"files": [
            			 {
@@ -40,7 +42,7 @@ pipeline {
     			}'''
 
             	)
-
+		}
         }
         }
     }
